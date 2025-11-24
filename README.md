@@ -175,7 +175,7 @@ Get started in less than 5 minutes!
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/student-retention.git
+git clone https://github.com/aliipou/Student-Retention-Prediction.git
 cd student-retention
 
 # Run automated setup
@@ -900,7 +900,7 @@ python src/train_pipeline.py --n-samples 5000 --models random_forest
 - 📖 Check [QUICKSTART.md](QUICKSTART.md) for setup guide
 - 📋 Review [TEST_REPORT.md](TEST_REPORT.md) for validation details
 - 💬 Open an [issue](https://github.com/yourusername/student-retention/issues)
-- 📧 Contact: your.email@example.com
+- 📧 Contact: Alipourrahim.ap@gmail.com
 
 ---
 
@@ -1013,16 +1013,16 @@ This project was inspired by:
 ### Project Maintainer
 
 **Your Name**
-- 📧 Email: your.email@example.com
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
-- 💼 LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- 🌐 Website: [yourwebsite.com](https://yourwebsite.com)
+- 📧 Email: Alipourrahim.ap@gmail.com
+- 🐙 GitHub: [@aliipou](https://github.com/aliipou)
+- 💼 LinkedIn: [Your Profile](https://www.linkedin.com/in/ali-pourrahim/))
+- 🌐 Website: 
 
 ### Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/student-retention/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/student-retention/discussions)
-- **Documentation**: [Wiki](https://github.com/yourusername/student-retention/wiki)
+- **Issues**: [GitHub Issues](https://github.com/aliipou/Student-Retention-Prediction/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/aliipou/Student-Retention-Prediction/discussions)
+- **Documentation**: [Wiki](https://github.com/aliipou/Student-Retention-Prediction/wiki)
 
 ---
 
@@ -1030,15 +1030,15 @@ This project was inspired by:
 
 If you find this project helpful, please consider giving it a star! ⭐
 
-[![Star History](https://img.shields.io/github/stars/yourusername/student-retention?style=social)](https://github.com/yourusername/student-retention/stargazers)
+[![Star History](https://img.shields.io/github/stars/aliipou/Student-Retention-Predictionstyle=social)](https://github.com/aliipou/Student-Retention-Prediction/stargazers)
 
 ---
 
 ## 📈 Project Stats
 
-![GitHub code size](https://img.shields.io/github/languages/code-size/yourusername/student-retention)
-![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/student-retention)
-![Lines of code](https://img.shields.io/tokei/lines/github/yourusername/student-retention)
+![GitHub code size](https://img.shields.io/github/languages/code-size/aliipou/Student-Retention-Prediction)
+![GitHub repo size](https://img.shields.io/github/repo-size/aliipou/Student-Retention-Prediction)
+![Lines of code](https://img.shields.io/tokei/lines/github/aliipou/Student-Retention-Prediction)
 
 ---
 
