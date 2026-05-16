@@ -60,3 +60,7 @@ Thumbs.db
 .coverage
 htmlcov/
 .pytest_cache/
+
+# Internal workflow files
+CLAUDE.md
+ANTI_GARBAGE_CHECKLIST.md
