@@ -1,43 +1,47 @@
-# Use official Python runtime as base image
-FROM python:3.9-slim
+# Builder stage
+FROM python:3.12-slim AS builder
 
-# Set working directory in container
+WORKDIR /build
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc g++ curl && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt --target /build/deps
+
+# Runtime stage
+FROM python:3.12-slim AS runtime
+
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends curl && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
-COPY requirements.txt .
+COPY --from=builder /build/deps /usr/local/lib/python3.12/site-packages
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Create non-root user
+RUN useradd -m -u 1000 appuser
 
-# Copy project files
 COPY src/ ./src/
 COPY data/ ./data/
 COPY models/ ./models/
 COPY assets/ ./assets/
-COPY notebooks/ ./notebooks/
-COPY tests/ ./tests/
 
-# Create necessary directories
-RUN mkdir -p data models assets
+RUN mkdir -p data models assets && chown -R appuser:appuser /app
 
-# Expose port for Streamlit
-EXPOSE 8501
+USER appuser
 
-# Set environment variables
+EXPOSE 8501 8000
+
 ENV PYTHONUNBUFFERED=1
 ENV STREAMLIT_SERVER_PORT=8501
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+ENV PYTHONPATH=/app
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl --fail http://localhost:8501/_stcore/health || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+    CMD curl --fail http://localhost:8501/_stcore/health 2>/dev/null || \
+        curl --fail http://localhost:8000/health 2>/dev/null || exit 1
 
-# Default command: run dashboard
 CMD ["streamlit", "run", "src/dashboard.py", "--server.address", "0.0.0.0"]
